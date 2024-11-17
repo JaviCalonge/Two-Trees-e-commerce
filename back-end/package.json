@@ -11,6 +11,9 @@
   "keywords": [], 
   "author": "",
   "license": "ISC",
+  "bin" : {
+    "execute" : "index.js"
+  }, 
   "description": "",
   "dependencies": {
     "@babel/runtime": "^7.26.0",
