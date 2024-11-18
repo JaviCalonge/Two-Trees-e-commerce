@@ -14,7 +14,7 @@ const props = defineProps({
 <template>
   <div class="grid-wrap">
     <div class="product-item" v-for="product in props.products" :key="product.id">
-      <img :src="product.imageUrl = `https://two-trees-e-commerce.com/images/${product.id}.webp`" alt="product" />
+      <img :src="`https://two-trees-e-commerce.com/images/${product.id}.webp`" alt="product" />
       <h3 class="product-name">{{ product.name }}</h3>
       <p class="product-price">{{ product.price }}</p>
       <RouterLink class="details-button-wrap" :to="{ name: 'product', params: { id: product.id } }">
