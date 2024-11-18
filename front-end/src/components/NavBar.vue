@@ -41,7 +41,7 @@ async function signIn() {
   }
   const auth = getAuth();
   const actionCodeSettings = {
-    url: `http://localhost:5173/product/${route.params.id}`,
+    url: `https://two-trees-e-commerce.com/product/${route.params.id}`,
     handleCodeInApp: true,
   };
 
