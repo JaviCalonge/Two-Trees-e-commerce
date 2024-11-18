@@ -20,6 +20,13 @@ async function startServer() {
 
   app.use("/images", express.static(path.join(__dirname, "../assets")));
 
+  app.use(
+    express.static(path.resolve(__dirname, "../dist"), {
+      maxAge: "1y",
+      etag: false,
+    })
+  );
+
   async function populatedCartIds(cartItems) {
     return Promise.all(
       cartItems.map(async (item) => {
@@ -153,6 +160,10 @@ async function startServer() {
       console.error("Error updating cart quantity:", error);
       res.status(500).json({ error: "Error updating cart quantity" });
     }
+  });
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "../dist/index.html"));
   });
 
   const PORT = process.env.PORT || 3000;

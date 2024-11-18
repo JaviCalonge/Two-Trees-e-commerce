@@ -90,7 +90,7 @@ async function signIn() {
   const email = prompt("Please enter your email to sign in");
   const auth = getAuth();
   const actionCodeSettings = {
-    url: "http://localhost:5173/products",
+    url: "https://two-trees-e-commerce.onrender.com/products",
     handleCodeInApp: true,
   };
   await sendSignInLinkToEmail(auth, email, actionCodeSettings);
