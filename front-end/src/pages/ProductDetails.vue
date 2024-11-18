@@ -64,6 +64,8 @@ onMounted(async () => {
     const response = await axios.get(`/api/products/${productId}`);
     product.value = response.data;
 
+    console.log(product.value);
+
     if (!product.value) {
       error.value = true;
     } else if (props.user) {

@@ -15,6 +15,11 @@ export default defineConfig({
       "/api": {
         target: "https://two-trees-e-commerce.onrender.com",
         changeOrigin: true,
+        secure: true,
+      },
+      https: {
+        key: fs.readFileSync("./localhost-key.pem"),
+        cert: fs.readFileSync("./localhost-cert.pem"),
       },
     },
   },
