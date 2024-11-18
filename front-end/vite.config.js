@@ -12,16 +12,17 @@ export default defineConfig({
   },
   server: {
     https: {
-      key: fs.readFileSync("./localhost-key.pem"), // Ruta al archivo clave
-      cert: fs.readFileSync("./localhost-cert.pem"), // Ruta al certificado
+      key: fs.readFileSync("./localhost-key.pem"),
+      cert: fs.readFileSync("./localhost-cert.pem"),
     },
     proxy: {
-      "/api": {
-        target: "https://two-trees-e-commerce.onrender.com",
+      "/images": {
+        target: "https://two-trees-e-commerce.onrender.com", // Tu URL de backend
         changeOrigin: true,
         secure: true,
+        rewrite: (path) => path.replace(/^\/images/, "/assets"),
       },
-      "/images": {
+      "/api": {
         target: "https://two-trees-e-commerce.onrender.com",
         changeOrigin: true,
         secure: true,
