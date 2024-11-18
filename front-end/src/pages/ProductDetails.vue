@@ -181,7 +181,7 @@ const isInCart = computed(
       <h1>{{ product.name }}</h1>
       <div class="img-wrap">
         <img
-          :src="`https://two-trees-e-commerce.onrender.com/images/${product.id}.webp`"
+          :src="`/images/${product.id}.webp`"
           alt="product"
           id="product-image"
         />
