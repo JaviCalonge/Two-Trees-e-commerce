@@ -1,5 +1,5 @@
 import { fileURLToPath, URL } from "node:url";
-
+import fs from "fs";
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 
@@ -11,15 +11,20 @@ export default defineConfig({
     },
   },
   server: {
+    https: {
+      key: fs.readFileSync("./localhost-key.pem"), // Ruta al archivo clave
+      cert: fs.readFileSync("./localhost-cert.pem"), // Ruta al certificado
+    },
     proxy: {
       "/api": {
         target: "https://two-trees-e-commerce.onrender.com",
         changeOrigin: true,
         secure: true,
       },
-      https: {
-        key: fs.readFileSync("./localhost-key.pem"),
-        cert: fs.readFileSync("./localhost-cert.pem"),
+      "/images": {
+        target: "https://two-trees-e-commerce.onrender.com",
+        changeOrigin: true,
+        secure: true,
       },
     },
   },
