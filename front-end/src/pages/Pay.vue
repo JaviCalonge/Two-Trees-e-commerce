@@ -60,7 +60,7 @@ async function clearCartAndPay() {
           <p class="order-name-title">{{ item.name }}</p>
           <img
   class="product-image"
-  :src="`https://two-trees-e-commerce.onrender.com/images/${product.id}.webp`"
+  :src="`https://two-trees-e-commerce.onrender.com/images/${item.id}.webp`"
   alt="product"
 />
 
