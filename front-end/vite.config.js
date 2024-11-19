@@ -17,10 +17,9 @@ export default defineConfig({
     },
     proxy: {
       "/images": {
-        target: "https://two-trees-e-commerce.onrender.com", // Tu URL de backend
+        target: "https://two-trees-e-commerce.onrender.com",
         changeOrigin: true,
         secure: true,
-        rewrite: (path) => path.replace(/^\/images/, "/assets"),
       },
       "/api": {
         target: "https://two-trees-e-commerce.onrender.com",

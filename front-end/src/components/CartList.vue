@@ -15,7 +15,7 @@ const emit = defineEmits(['remove-from-cart', 'update-quantity']);
   <div class="product-container" v-for="product in props.cart" :key="product.id">
     <div>
       <h2>{{ product.name }}</h2>
-      <img class="product-image" :src="product.imageUrl = `http://localhost:8000/images/${product.id}.webp`" alt="product" />
+      <img class="product-image" :src="`/images/${product.id}.webp`" alt="product" />
     </div>
     
     <div class="details-wrap">
