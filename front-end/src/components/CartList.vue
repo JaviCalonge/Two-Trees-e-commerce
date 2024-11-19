@@ -16,10 +16,11 @@ const emit = defineEmits(['remove-from-cart', 'update-quantity']);
     <div>
       <h2>{{ product.name }}</h2>
       <img
-        class="product-image"
-        :src="`/images/${product.id}.webp`"
-        alt="product"
-      />
+  class="product-image"
+  :src="`https://two-trees-e-commerce.onrender.com/images/${product.id}.webp`"
+  alt="product"
+/>
+
 
     </div>
     
