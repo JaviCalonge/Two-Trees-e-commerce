@@ -4,7 +4,6 @@ import Footer from "@/components/Footer.vue";
 import { ref, onMounted, computed, watch } from "vue";
 import axios from "axios";
 import { useRoute } from "vue-router";
-import { useRouter } from "vue-router";
 import PageNotFound from "./PageNotFound.vue";
 import {
   getAuth,
@@ -15,15 +14,14 @@ import {
 
 const product = ref(null);
 const route = useRoute();
-const router = useRouter();
 const error = ref(false);
 const cartItems = ref([]);
 const loading = ref(true); // Añade el flag de carga
 const showModal = ref(false);
-const productIdToAdd = ref(null)
+const productIdToAdd = ref(null);
 const showModalIn = ref(false);
-const email = ref("");
 const message = ref("");
+const email = ref("");
 
 // Define el prop `user` para recibir el usuario autenticado desde el componente principal
 const props = defineProps({
@@ -56,10 +54,9 @@ onMounted(async () => {
   if (isSignInWithEmailLink(auth, window.location.href)) {
     const email = window.localStorage.getItem("emailForSignIn");
     await signInWithEmailLink(auth, email, window.location.href);
-    showModalIn.value = true;
+    //alert("Successfully signed in!");
     message.value = "Successfully signed in!";
     window.localStorage.removeItem("emailForSignIn");
-    router.push({ name: "products" });
   }
 
   const productId = route.params.id;
@@ -96,12 +93,13 @@ async function signIn() {
   if (!email.value) {
     return;
   }
+  //const email = prompt("Please enter your email to sign in");
   const auth = getAuth();
   const actionCodeSettings = {
-    url: "https://two-trees-e-commerce.onrender.com/products",
+    //url: "https://two-trees-e-commerce.onrender.com/products",
+    url: `https://two-trees-e-commerce.com/product/${route.params.id}`,
     handleCodeInApp: true,
   };
-  
   try {
     await sendSignInLinkToEmail(auth, email.value, actionCodeSettings);
     message.value = "A login link was sent to your email";
@@ -180,8 +178,13 @@ function openModalIn() {
 
 // Función para cerrar el modal
 function closeModal() {
-  showModalIn.value = false;
+  showModal.value = false;
   //productIdToAdd.value = null;
+}
+
+function closeModalIn() {
+  showModalIn.value = false;
+  message.value = "";
 }
 
 // Computed para verificar si un producto está en el carrito
@@ -234,12 +237,12 @@ const isInCart = computed(
     </div>
   </div>
 
-   <!-- Modal Log In -->
-   <div v-if="showModalIn" class="modal-overlay">
+  <!-- Modal Log In -->
+  <div v-if="showModalIn" class="modal-overlay">
     <div class="modal-content">
       <h2 v-if="!message">Please enter your email to sign in</h2>
       <h2 v-else>{{ message }}</h2>
-      <template v-if="!message">
+      <div v-if="!message">
         <input
           v-model="email"
           type="email"
@@ -248,13 +251,10 @@ const isInCart = computed(
         />
         <div class="modal-buttons">
           <button class="modal-button" @click="signIn">Log In</button>
+          <button class="modal-button" @click="closeModalIn">Cancel</button>
         </div>
-      </template>
-      <div class="modal-buttons" v-else>
-        <button class="modal-button" @click="closeModal">Close</button>
       </div>
     </div>
   </div>
-
   <Footer />
 </template>

@@ -101,26 +101,24 @@ function closeModal() {
     </div>
 
     <!-- Modal Log In -->
-  <div v-if="showModalIn" class="modal-overlay">
-    <div class="modal-content">
-      <h2 v-if="!message">Please enter your email to sign in</h2>
-      <h2 v-else>{{ message }}</h2>
-      <template v-if="!message">
-        <input
-          v-model="email"
-          type="email"
-          placeholder="Enter your email"
-          class="email-input"
-        />
+    <div v-if="showModalIn" class="modal-overlay">
+      <div class="modal-content">
+        <h2 v-if="!message">Please enter your email to sign in</h2>
+        <h2 v-else>{{ message }}</h2>
+        <div v-if="!message">
+          <input
+            v-model="email"
+            type="email"
+            placeholder="Enter your email"
+            class="email-input"
+          />
+          </div>
         <div class="modal-buttons">
           <button class="modal-button" @click="signIn">Log In</button>
+          <button class="modal-button" @click="closeModal">Cancel</button>
         </div>
-      </template>
-      <div class="modal-buttons" v-else>
-        <button class="modal-button" @click="closeModal">Close</button>
       </div>
     </div>
-  </div>
 
   <!-- Modal Log Out -->
   <div v-if="showModalOut" class="modal-overlay">

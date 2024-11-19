@@ -364,8 +364,8 @@ select {
 
 .modal-buttons {
   display: flex;
-  justify-content: space-around;
-  gap: 16px;
+  justify-content: center;
+  gap: 40px;
 }
 
 .modal-button {
