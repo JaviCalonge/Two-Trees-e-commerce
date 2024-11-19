@@ -1,4 +1,5 @@
 import { fileURLToPath, URL } from "node:url";
+import fs from "fs";
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 
@@ -8,13 +9,11 @@ export default defineConfig({
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url)),
     },
-    server: {
-      proxy: {
-        "/api": {
-          target: "https://two-trees-e-commerce.onrender.com",
-          changeOrigin: true,
-          secure: true,
-        },
+    proxy: {
+      "/api": {
+        target: "https://two-trees-e-commerce.onrender.com",
+        changeOrigin: true,
+        secure: true,
       },
     },
   },
