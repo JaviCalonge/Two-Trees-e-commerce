@@ -1,17 +1,17 @@
 <script setup>
 import logo from "../assets/logo-hexagon.svg";
-import { ref, onMounted, watch } from "vue";
+import { ref, onMounted } from "vue";
 import { useRoute } from "vue-router";
-import { useRouter } from "vue-router"
+import { useRouter } from "vue-router";
 import { getAuth, sendSignInLinkToEmail, isSignInWithEmailLink,
   signInWithEmailLink, signOut } from "firebase/auth";
 
 const route = useRoute();
 const router = useRouter();
-const showModalIn = ref(false); // Modal Log In
-const showModalOut = ref(false); // Modal Log Out
-const message = ref(""); // Mensaje dinámico para mostrar en modales
-const email = ref(""); // Para almacenar el email ingresado
+const showModalIn = ref(false);
+const showModalOut = ref(false);
+const message = ref("");
+const email = ref("");
 
 const props = defineProps({
   user: {
