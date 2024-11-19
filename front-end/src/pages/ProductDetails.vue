@@ -181,7 +181,7 @@ const isInCart = computed(
       <h1>{{ product.name }}</h1>
       <div class="img-wrap">
         <img
-          :src="`/images/${product.id}.webp`"
+          :src="item.imageUrl = `api/images/${item.id}.webp`"
           alt="product"
           id="product-image"
         />

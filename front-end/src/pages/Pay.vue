@@ -58,7 +58,7 @@ async function clearCartAndPay() {
       <div v-for="item in cartData" :key="item.id" class="order-item">
         <div class="order-name">
           <p class="order-name-title">{{ item.name }}</p>
-          <img class="product-image" :src="`/images/${product.id}.webp`" alt="product" />
+          <img class="product-image" :src="item.imageUrl = `api/images/${item.id}.webp`" alt="product" />
         </div>
         <div class="order-details">
           <p>Price: {{ item.price }} €</p>

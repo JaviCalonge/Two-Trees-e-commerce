@@ -9,18 +9,7 @@ export default defineConfig({
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url)),
     },
-  },
-  server: {
-    https: {
-      key: fs.readFileSync("./localhost-key.pem"),
-      cert: fs.readFileSync("./localhost-cert.pem"),
-    },
     proxy: {
-      "/images": {
-        target: "https://two-trees-e-commerce.onrender.com",
-        changeOrigin: true,
-        secure: true,
-      },
       "/api": {
         target: "https://two-trees-e-commerce.onrender.com",
         changeOrigin: true,
