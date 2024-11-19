@@ -41,7 +41,7 @@ async function signIn() {
   }
   const auth = getAuth();
   const actionCodeSettings = {
-    url: `https://two-trees-e-commerce.com/product/${route.params.id}`,
+    url: `two-trees-e-commerce.onrender.com/product/${route.params.id}`,
     handleCodeInApp: true,
   };
 
