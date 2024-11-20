@@ -123,10 +123,32 @@ function closeModal() {
   <!-- Modal Log Out -->
   <div v-if="showModalOut" class="modal-overlay">
     <div class="modal-content">
-      <h2 class="hope">Hope to see you soon</h2>
+      <h2 v-if="message === 'You have successfully signed out.'">
+        {{ message }}
+      </h2>
+      <h2 v-else class="hope">Hope to see you soon</h2>
       <div class="modal-buttons">
-        <button class="modal-button" @click="signingOut">Log Out</button>
-        <button class="modal-button" @click="closeModal">Cancel</button>
+        <button
+          v-if="message !== 'You have successfully signed out.'"
+          class="modal-button"
+          @click="signingOut"
+        >
+          Log Out
+        </button>
+        <button
+          v-if="message !== 'You have successfully signed out.'"
+          class="modal-button"
+          @click="closeModal"
+        >
+          Cancel
+        </button>
+        <button
+          v-if="message === 'You have successfully signed out.'"
+          class="modal-button"
+          @click="closeModal"
+        >
+          OK
+        </button>
       </div>
     </div>
   </div>
