@@ -41,9 +41,14 @@ async function signIn() {
   }
   const auth = getAuth();
   const actionCodeSettings = {
-    url: `https://two-trees-e-commerce.onrender.com/product/${route.params.id}`,
-    handleCodeInApp: true,
-  };
+  url: `http://localhost:5173/product/${route.params.id}`, // Cambia al puerto de tu entorno local
+  handleCodeInApp: true,
+};
+  // const actionCodeSettings = {
+  //               //two-trees-e-commerce.onrender.com
+  //   url: `https://two-trees-e-commerce.onrender.com/product/${route.params.id}`,
+  //   handleCodeInApp: true,
+  // };
 
   try {
     await sendSignInLinkToEmail(auth, email.value, actionCodeSettings);
