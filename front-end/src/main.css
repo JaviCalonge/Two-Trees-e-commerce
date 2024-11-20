@@ -514,6 +514,7 @@ select {
 
   .grid-wrap {
     grid-template-columns: 1fr 1fr; /* 2 columnas en pantallas muy pequeñas */
+    justify-content: center;
   }
 
   .logo-wrap {
