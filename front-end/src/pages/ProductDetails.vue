@@ -47,14 +47,14 @@ async function loadCart(user) {
 
 // Cuando se monta el componente, chequea si se está accediendo desde un link de autenticación y, si es así, inicia sesión
 onMounted(async () => {
-  window.scrollTo(0, 0); // Asegura que la página se posicione en la parte superior
+  window.scrollTo(0, 0);
   
   const auth = getAuth();
 
   if (isSignInWithEmailLink(auth, window.location.href)) {
     const email = window.localStorage.getItem("emailForSignIn");
     await signInWithEmailLink(auth, email, window.location.href);
-    //alert("Successfully signed in!");
+    showModalIn.value = true;
     message.value = "Successfully signed in!";
     window.localStorage.removeItem("emailForSignIn");
   }
@@ -64,8 +64,6 @@ onMounted(async () => {
   try {
     const response = await axios.get(`/api/products/${productId}`);
     product.value = response.data;
-
-    console.log(product.value);
 
     if (!product.value) {
       error.value = true;
@@ -93,7 +91,6 @@ async function signIn() {
   if (!email.value) {
     return;
   }
-  //const email = prompt("Please enter your email to sign in");
   const auth = getAuth();
   const actionCodeSettings = {
     url: "https://two-trees-e-commerce.onrender.com/products",
