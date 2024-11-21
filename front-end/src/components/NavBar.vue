@@ -112,44 +112,41 @@ function closeModal() {
             placeholder="Enter your email"
             class="email-input"
           />
-          </div>
-          <div class="modal-buttons" v-if="!message">
+          <div class="modal-buttons">
             <button class="modal-button" @click="signIn">Log In</button>
             <button class="modal-button" @click="closeModal">Cancel</button>
           </div>
+        </div>
       </div>
     </div>
 
   <!-- Modal Log Out -->
   <div v-if="showModalOut" class="modal-overlay">
-    <div class="modal-content">
-      <h2 v-if="message === 'You have successfully signed out.'">
-        {{ message }}
-      </h2>
-      <h2 v-else class="hope">Hope to see you soon</h2>
-      <div class="modal-buttons">
-        <button
-          v-if="message !== 'You have successfully signed out.'"
-          class="modal-button"
-          @click="signingOut"
-        >
-          Log Out
-        </button>
-        <button
-          v-if="message !== 'You have successfully signed out.'"
-          class="modal-button"
-          @click="closeModal"
-        >
-          Cancel
-        </button>
-        <button
-          v-if="message === 'You have successfully signed out.'"
-          class="modal-button"
-          @click="closeModal"
-        >
-          OK
-        </button>
-      </div>
+  <div class="modal-content">
+    <h2>{{ message || "Hope to see you soon" }}</h2>
+    <div class="modal-buttons">
+      <button
+        v-if="message !== 'You have successfully signed out.'"
+        class="modal-button"
+        @click="signingOut"
+      >
+        Log Out
+      </button>
+      <button
+        v-if="message !== 'You have successfully signed out.'"
+        class="modal-button"
+        @click="closeModal"
+      >
+        Cancel
+      </button>
+      <button
+        v-if="message === 'You have successfully signed out.'"
+        class="modal-button"
+        @click="closeModal"
+      >
+        OK
+      </button>
     </div>
   </div>
+</div>
 </template>
