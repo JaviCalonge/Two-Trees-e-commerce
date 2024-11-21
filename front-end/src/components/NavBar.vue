@@ -59,7 +59,7 @@ async function signIn() {
 function signingOut() {
   const auth = getAuth();
   signOut(auth).then(() => {
-    message.value = "You have successfully signed out.";
+    message.value = 'You have successfully signed out.';
     showModalOut.value = false; // Oculta el modal de Log Out
     showModalIn.value = true; // Muestra un modal con el mensaje
   });
@@ -113,10 +113,10 @@ function closeModal() {
             class="email-input"
           />
           </div>
-        <div class="modal-buttons">
-          <button class="modal-button" @click="signIn">Log In</button>
-          <button class="modal-button" @click="closeModal">Cancel</button>
-        </div>
+          <div class="modal-buttons" v-if="!message">
+            <button class="modal-button" @click="signIn">Log In</button>
+            <button class="modal-button" @click="closeModal">Cancel</button>
+          </div>
       </div>
     </div>
 
