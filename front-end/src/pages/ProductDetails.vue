@@ -50,6 +50,7 @@ onMounted(async () => {
   window.scrollTo(0, 0);
   
   const auth = getAuth();
+  const productId = route.params.id;
 
   if (isSignInWithEmailLink(auth, window.location.href)) {
     const email = window.localStorage.getItem("emailForSignIn");
@@ -57,9 +58,8 @@ onMounted(async () => {
     showModalIn.value = true;
     message.value = "Successfully signed in!";
     window.localStorage.removeItem("emailForSignIn");
+    route.push({ name: `products/${productId}` });
   }
-
-  const productId = route.params.id;
 
   try {
     const response = await axios.get(`/api/products/${productId}`);
