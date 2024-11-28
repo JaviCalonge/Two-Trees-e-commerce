@@ -92,8 +92,9 @@ async function signIn() {
     return;
   }
   const auth = getAuth();
+  const productId = route.params.id;
   const actionCodeSettings = {
-    url: `https://two-trees-e-commerce.onrender.com/product/${route.params.id}`,
+    url: `https://two-trees-e-commerce.onrender.com/product/${productId}`,
     handleCodeInApp: true,
   };
   try {
