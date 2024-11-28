@@ -50,7 +50,7 @@ async function signIn() {
     message.value = "A login link was sent to your email";
     showModalIn.value = false; // Cierra el modal
     window.localStorage.setItem("emailForSignIn", email.value);
-    showModalIn.value = true; // Muestra el mensaje
+    //showModalIn.value = true; // Muestra el mensaje
   } catch (err) {
     console.error("Error sending email link:", err);
   }
@@ -61,7 +61,7 @@ function signingOut() {
   signOut(auth).then(() => {
     message.value = 'You have successfully signed out.';
     showModalOut.value = false; // Oculta el modal de Log Out
-    showModalIn.value = true; // Muestra un modal con el mensaje
+    //showModalIn.value = true; // Muestra un modal con el mensaje
   });
 }
 
@@ -122,10 +122,18 @@ function closeModal() {
     <!-- Modal Log Out -->
   <div v-if="showModalOut" class="modal-overlay">
     <div class="modal-content">
-      <h2>Hope to see you soon</h2>
-      <div class="modal-buttons">
-        <template v-if="message !== 'You have successfully signed out.'">
+      <h2 v-if="!message">Hope to see you soon</h2>
+      <div v-else>
+        <h2>{{ message }}</h2>
           <button
+            class="modal-button"
+            @click="closeModal"
+           >
+            OK
+          </button>
+      </div>
+        <div v-if="!message">
+         <button
             class="modal-button"
             @click="signingOut"
           >
@@ -137,15 +145,7 @@ function closeModal() {
           >
             Cancel
           </button>
-        </template>
-        <button
-          v-else
-          class="modal-button"
-          @click="closeModal"
-        >
-          OK
-        </button>
-      </div>
+        </div>
     </div>
   </div>
 </template>
