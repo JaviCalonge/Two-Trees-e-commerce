@@ -60,8 +60,6 @@ function signingOut() {
   const auth = getAuth();
   signOut(auth).then(() => {
     message.value = 'You have successfully signed out.';
-    showModalOut.value = false; // Oculta el modal de Log Out
-    //showModalIn.value = true; // Muestra un modal con el mensaje
   });
 }
 
