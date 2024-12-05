@@ -5,7 +5,9 @@
 ---
 
 ## 📖 Descripción
-Este proyecto es una aplicación de comercio electrónico diseñada para ofrecer una experiencia de usuario intuitiva. Incluye funcionalidades clave como exploración de productos, gestión de carrito de compras y procesamiento de pedidos.  
+Sitio web de una tienda online ficticia. Para poder añadir productos al carrito de compra hay que logearse a través de email con Firebase.
+Una vez logeado puedes añadir productos en el carrito, editar la cantidad y proceder al pago, accediendo a una página con el resumen del pedido.
+
 
 ### Tecnologías principales:
 - **Frontend**: Construido con Vue.js para una interfaz moderna y responsiva.
